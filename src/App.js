@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({ loading: true });
 
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&       client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      `https://api.github.com/search/users?q=${searchText}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
     this.setState({ users: res.data.items, loading: false });
   };
@@ -46,6 +46,7 @@ class App extends Component {
 
   clearUsers = () => this.setState({ users: [] });
 
+  // Setting whatever the msg is sent from Search.js to state
   showAlert = (msg, type) => {
     this.setState({ alert: { msg, type } });
 
@@ -60,6 +61,7 @@ class App extends Component {
         <div className='App'>
           <Navbar />
           <div className='container'>
+            {/* Display Alert msg from state */}
             <Alert alert={this.state.alert} />
             <Switch>
               <Route

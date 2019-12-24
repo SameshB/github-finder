@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-export class UserInfo extends Component {
+class UserInfo extends Component {
+  componentDidMount() {
+    this.props.getUserInfo(this.props.match.params.login);
+  }
   render() {
-    return <div>User</div>;
+    const { login } = this.props.user;
+    return <div>{login}</div>;
   }
 }
 
